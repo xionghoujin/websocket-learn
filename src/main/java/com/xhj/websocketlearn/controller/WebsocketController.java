@@ -22,6 +22,12 @@ public class WebsocketController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * 消息回复
+     *
+     * @param message
+     * @return
+     */
     @MessageMapping("/sendTest")
     @SendTo("/topic/subscribeTest")
     public ServerMessage sendDemo(ClientMessage message) {
@@ -29,6 +35,11 @@ public class WebsocketController {
         return new ServerMessage("你发送的消息为:" + message.getName());
     }
 
+    /**
+     * 消息订阅
+     *
+     * @return
+     */
     @SubscribeMapping("/subscribeTest")
     public ServerMessage sub() {
         logger.info("XXX用户订阅了我。。。");
